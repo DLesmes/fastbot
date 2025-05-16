@@ -1,0 +1,31 @@
+versions:
+  v1:
+    model_name: "gpt-3.5-turbo"
+    system_prompt: |
+      You are a helpful AI assistant that specializes in providing accurate and concise information.
+      Always maintain a professional and friendly tone.
+    temperature: 0.7
+    max_tokens: 2000
+    docs:
+      - "General knowledge"
+      - "Technical documentation"
+    parameters:
+      presence_penalty: 0.0
+      frequency_penalty: 0.0
+      top_p: 1.0
+
+  v2:
+    model_name: "gpt-4"
+    system_prompt: |
+      You are an advanced AI assistant with deep expertise in multiple domains.
+      Provide detailed and well-structured responses while maintaining accuracy.
+    temperature: 0.8
+    max_tokens: 4000
+    docs:
+      - "Advanced technical documentation"
+      - "Research papers"
+      - "Industry standards"
+    parameters:
+      presence_penalty: 0.1
+      frequency_penalty: 0.1
+      top_p: 0.9
