@@ -1,6 +1,6 @@
 versions:
   v1:
-    model_name: "gpt-3.5-turbo"
+    model_name: "gemini-2.0-flash-lite"
     system_prompt: |
       You are a helpful AI assistant that specializes in providing accurate and concise information.
       Always maintain a professional and friendly tone.
@@ -15,7 +15,7 @@ versions:
       top_p: 1.0
 
   v2:
-    model_name: "gpt-4"
+    model_name: "gemini-1.5-pro"
     system_prompt: |
       You are an advanced AI assistant with deep expertise in multiple domains.
       Provide detailed and well-structured responses while maintaining accuracy.

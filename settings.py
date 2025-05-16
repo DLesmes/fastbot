@@ -1,4 +1,4 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 from pathlib import Path
 import yaml
 from typing import Dict, Any
@@ -6,45 +6,31 @@ from typing import Dict, Any
 class Settings(BaseSettings):
     app_name: str = "FastBot"
     debug: bool = True
-    llm_version: str = "v1"  # Default version
+    llm_version: str = "v1"
+    google_api_key: str = ""
+    model_name: str = "gemini-1.5-flash-lite"
+    system_prompt: str = ""
+    temperature: float = 0.7
+    max_tokens: int = 2000
+    parameters: Dict[str, Any] = {}
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.llm_config = self._load_llm_config()
-    
-    def _load_llm_config(self) -> Dict[str, Any]:
+        # Load version-specific configuration
         config_path = Path(__file__).parent / "config" / "prompts.yml"
         try:
             with open(config_path, 'r') as file:
                 config = yaml.safe_load(file)
-                return config['versions'].get(self.llm_version, {})
+                version_config = config['versions'].get(self.llm_version, {})
+                
+                # Update settings with version-specific values
+                self.model_name = version_config.get('model_name', self.model_name)
+                self.system_prompt = version_config.get('system_prompt', self.system_prompt)
+                self.temperature = version_config.get('temperature', self.temperature)
+                self.max_tokens = version_config.get('max_tokens', self.max_tokens)
+                self.parameters = version_config.get('parameters', self.parameters)
         except Exception as e:
-            print(f"Error loading LLM config: {e}")
-            return {}
-    
-    @property
-    def model_name(self) -> str:
-        return self.llm_config.get('model_name', 'gpt-3.5-turbo')
-    
-    @property
-    def system_prompt(self) -> str:
-        return self.llm_config.get('system_prompt', '')
-    
-    @property
-    def temperature(self) -> float:
-        return self.llm_config.get('temperature', 0.7)
-    
-    @property
-    def max_tokens(self) -> int:
-        return self.llm_config.get('max_tokens', 2000)
-    
-    @property
-    def docs(self) -> list:
-        return self.llm_config.get('docs', [])
-    
-    @property
-    def parameters(self) -> dict:
-        return self.llm_config.get('parameters', {})
+            print(f"Error loading prompt config: {e}")
 
     class Config:
         env_file = ".env"
