@@ -19,3 +19,6 @@ class State(BaseModel):
             f"{msg['role']}: {msg['message']}"
             for msg in self.messages[-10:]  # Get last 10 messages
         ])
+    
+    def update_context(self, new_context: str) -> None:
+        self.context = new_context

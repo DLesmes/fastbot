@@ -6,9 +6,14 @@ versions:
       Always maintain a professional and friendly tone.
     temperature: 0.7
     max_tokens: 2000
-    docs:
-      - "General knowledge"
-      - "Technical documentation"
+    docs: |
+      Previous conversation:
+      {context}
+
+      Relevant documents:
+      {docs_text}
+
+      Current message: {message}
     parameters:
       presence_penalty: 0.0
       frequency_penalty: 0.0
@@ -21,10 +26,14 @@ versions:
       Provide detailed and well-structured responses while maintaining accuracy.
     temperature: 0.8
     max_tokens: 4000
-    docs:
-      - "Advanced technical documentation"
-      - "Research papers"
-      - "Industry standards"
+    docs: |
+      Previous conversation:
+      {context}
+
+      Relevant documents:
+      {docs_text}
+
+      Current message: {message}
     parameters:
       presence_penalty: 0.1
       frequency_penalty: 0.1

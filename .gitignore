@@ -5,3 +5,5 @@ data/
 !data/.gitkeep
 data/memory/
 data/memory/*.json
+data/vectorstore/
+data/vectorstore/*.sqlite3
