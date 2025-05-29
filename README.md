@@ -142,7 +142,7 @@ fastbot/
 
 ## Contact
 
-- Project Link: [https://github.com/yourusername/fastbot](https://github.com/yourusername/fastbot)
+- Project Link: [https://github.com/dlesmes/fastbot](https://github.com/dlesmes/fastbot)
 - Email: your.email@example.com
 
 ## License
