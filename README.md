@@ -102,29 +102,52 @@ Query Parameters:
 - `role`: Message role (default: "user")
 
 
-
 ### Prompt Templates
 Templates are configured in `config/prompts.yml` with version-specific settings.
 
 ## Project Structure
 fastbot/
 ├── config/
-│ └── prompts.yml
+│   └── prompts.yml
 ├── models/
-│ ├── message.py
-│ └── state.py
+│   ├── message.py
+│   └── state.py
 ├── services/
-│ ├── agent.py
-│ ├── memory.py
-│ └── retriever.py
+│   ├── agent.py
+│   ├── memory.py
+│   └── retriever.py
 ├── controllers/
-│ └── chat.py
+│   └── chat.py
 ├── clients/
-│ └── llm/
-│ └── gemini_client.py
+│   ├── llm/
+│   │   └── gemini_client.py
+│   └── embeddings/
+│       └── huggingface_client.py
+├── data/
+│   └── documents/
 ├── main.py
 ├── settings.py
-└── requirements.txt
+├── pyproject.toml
+└── .env.example
+
+## Dependencies
+
+The project uses modern Python packaging with `pyproject.toml` for dependency management. Key dependencies include:
+
+- FastAPI: Modern web framework for building APIs
+- Google Generative AI: For Gemini model integration
+- LangChain: Framework for LLM applications
+- ChromaDB: Vector database for document storage
+- HuggingFace Embeddings: For document vectorization
+- PyYAML: For configuration management
+
+## Configuration Files
+
+### pyproject.toml
+The project uses `pyproject.toml` for dependency management and project metadata. This modern approach provides better dependency resolution and project configuration.
+
+### prompts.yml
+Located in the `config` directory, this YAML file contains version-specific prompt templates and configurations for the chatbot's responses.
 
 ## Contributing
 
