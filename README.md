@@ -129,6 +129,7 @@ Query Parameters:
 Templates are configured in `config/prompts.yml` with version-specific settings.
 
 ## Project Structure
+```
 fastbot/
 ├── config/
 │   └── prompts.yml
@@ -152,6 +153,7 @@ fastbot/
 ├── settings.py
 ├── pyproject.toml
 └── .env.example
+```
 
 ## Dependencies
 
